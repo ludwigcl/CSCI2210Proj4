@@ -1,0 +1,14 @@
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\obj\Debug\net6.0\Project 4 - Dispatch Calculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\obj\Debug\net6.0\Project 4 - Dispatch Calculator.AssemblyInfoInputs.cache
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\obj\Debug\net6.0\Project 4 - Dispatch Calculator.AssemblyInfo.cs
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\obj\Debug\net6.0\Project 4 - Dispatch Calculator.csproj.CoreCompileInputs.cache
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\bin\Debug\net6.0\Project 4 - Dispatch Calculator.exe
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\bin\Debug\net6.0\Project 4 - Dispatch Calculator.deps.json
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\bin\Debug\net6.0\Project 4 - Dispatch Calculator.runtimeconfig.json
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\bin\Debug\net6.0\Project 4 - Dispatch Calculator.dll
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\bin\Debug\net6.0\Project 4 - Dispatch Calculator.pdb
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\obj\Debug\net6.0\Project 4 - Dispatch Calculator.dll
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\obj\Debug\net6.0\refint\Project 4 - Dispatch Calculator.dll
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\obj\Debug\net6.0\Project 4 - Dispatch Calculator.pdb
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\obj\Debug\net6.0\Project 4 - Dispatch Calculator.genruntimeconfig.cache
+C:\Users\Cplud\OneDrive - East Tennessee State University\ETSU S-24\CSCI 2210\Labs\Project 4 - Dispatch Calculator\obj\Debug\net6.0\ref\Project 4 - Dispatch Calculator.dll
