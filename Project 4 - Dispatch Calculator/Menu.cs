@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +15,6 @@ namespace Project_4___Dispatch_Calculator
         private Calculator calculator;
         private Dictionary<string, Action> commandDispatchTable;
 
-
         /// <summary>
         /// Initializes a new instance of the Menu class, creates a Calculator instance, and displays initial instructions.
         /// </summary>
@@ -25,18 +25,22 @@ namespace Project_4___Dispatch_Calculator
             DisplayInstructions();
         }
 
+        /// <summary>
+        /// Initializes the command dispatch table mapping command strings to their handling methods.
+        /// </summary>
         private void InitializeCommandDispatchTable()
         {
             commandDispatchTable = new Dictionary<string, Action>
             {
-                {"exit", () => { }},  // This is a placeholder to gracefully exit the loop in Run
+                {"exit", () => { }},  // Placeholder for graceful exit
                 {"save to file", HandleSaveToFile},
                 {"load from file", HandleLoadFromFile},
                 {"undo", HandleUndo},
                 {"fib", HandleFibonacci},
                 {"clear", HandleClear},
                 {"list variables", HandleListVariables},
-                {"list", HandleListVariables}  // Alias for list variables
+                {"list", HandleListVariables},  // Alias for list variables
+                {"rpn", HandleRPN}  // Adding RPN handling
             };
         }
 
@@ -66,11 +70,11 @@ namespace Project_4___Dispatch_Calculator
             Console.WriteLine("  list           List all saved variables");
             Console.WriteLine("  undo           Undo the last calculation");
             Console.WriteLine("  fib            Calculate Fibonacci number of the last answer");
+            Console.WriteLine("  rpn            Enter calculations in Reverse Polish Notation(Spaces between Characters Required)");
             Console.WriteLine("  clear          Reset the calculator state to zero");
             Console.WriteLine("  exit           Quit the calculator program");
             Console.ResetColor();
         }
-
 
         /// <summary>
         /// Starts the command loop, processing user input commands until 'exit' is entered.
@@ -94,18 +98,24 @@ namespace Project_4___Dispatch_Calculator
                     continue;
                 }
 
+                if (input == "exit")
+                    break;
+
                 if (commandDispatchTable.TryGetValue(input, out Action commandAction))
                 {
-                    if (input == "exit") break;
                     commandAction.Invoke();
                 }
                 else
                 {
-                    HandleEvaluateExpression(input);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Unknown command. Try again.");
+                    Console.ResetColor();
                 }
             }
         }
-
+        /// <summary>
+        /// Handles the 'save to file' command by prompting for a file path and saving variables.
+        /// </summary>
         private void HandleSaveToFile()
         {
             Console.WriteLine("Enter the file path to save or press Enter to use default:");
@@ -113,6 +123,9 @@ namespace Project_4___Dispatch_Calculator
             calculator.SaveVariablesToFile(filePath);
         }
 
+        /// <summary>
+        /// Handles the 'load from file' command by prompting for a file path and loading variables.
+        /// </summary>
         private void HandleLoadFromFile()
         {
             Console.WriteLine("Enter the file path to load or press Enter to use default:");
@@ -120,12 +133,18 @@ namespace Project_4___Dispatch_Calculator
             calculator.LoadVariablesFromFile(filePath);
         }
 
+        /// <summary>
+        /// Handles the 'undo' command by reverting to the previous calculation state.
+        /// </summary>
         private void HandleUndo()
         {
             calculator.Undo();
             Console.WriteLine("Undid the last operation.");
         }
 
+        /// <summary>
+        /// Handles the 'fib' command by calculating the Fibonacci number of the last answer.
+        /// </summary>
         private void HandleFibonacci()
         {
             try
@@ -141,6 +160,9 @@ namespace Project_4___Dispatch_Calculator
             }
         }
 
+        /// <summary>
+        /// Handles the 'clear' command by resetting the calculator's state and history.
+        /// </summary>
         private void HandleClear()
         {
             calculator.ClearState();
@@ -150,6 +172,10 @@ namespace Project_4___Dispatch_Calculator
             DisplayInstructions();
         }
 
+        /// <summary>
+        /// Handles saving a variable under a given name, extracted from the input command.
+        /// </summary>
+        /// <param name="input">The full input command containing the variable name.</param>
         private void HandleSaveVariable(string input)
         {
             var name = input.Substring(5);
@@ -168,6 +194,10 @@ namespace Project_4___Dispatch_Calculator
             }
         }
 
+        /// <summary>
+        /// Handles loading a variable by name, extracted from the input command.
+        /// </summary>
+        /// <param name="input">The full input command containing the variable name.</param>
         private void HandleLoadVariable(string input)
         {
             var name = input.Substring(5);
@@ -186,6 +216,9 @@ namespace Project_4___Dispatch_Calculator
             }
         }
 
+        /// <summary>
+        /// Handles listing all saved variables.
+        /// </summary>
         private void HandleListVariables()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -193,6 +226,10 @@ namespace Project_4___Dispatch_Calculator
             Console.ResetColor();
         }
 
+        /// <summary>
+        /// Handles evaluation of a mathematical expression entered by the user.
+        /// </summary>
+        /// <param name="input">The input expression to evaluate.</param>
         private void HandleEvaluateExpression(string input)
         {
             try
@@ -210,6 +247,27 @@ namespace Project_4___Dispatch_Calculator
             }
         }
 
-
+        /// <summary>
+        /// Handles Reverse Polish Notation (RPN) input from the user.
+        /// </summary>
+        private void HandleRPN()
+        {
+            Console.WriteLine("Enter an RPN expression (e.g., '3 4 + 2 *'):");
+            string input = Console.ReadLine();
+            string[] tokens = input.Split(' ');
+            try
+            {
+                var result = calculator.EvaluateRPN(tokens);
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("RPN Result: " + result);
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error evaluating RPN: " + ex.Message);
+                Console.ResetColor();
+            }
+        }
     }
 }
